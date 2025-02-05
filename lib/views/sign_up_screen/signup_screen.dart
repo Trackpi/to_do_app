@@ -1,5 +1,6 @@
 // today's work for rosemary
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -28,7 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
         child: ListView(
           children: [
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: Adaptive.w(20)),
             Center(
               child: Image.asset(
                 'assets/images/logo.png',
@@ -36,17 +37,17 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: screenHeight * 0.2,
               ),
             ),
-          //  _buildTitle('Sign Up', screenWidth),
-   Center(
-     child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.06,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+            //  _buildTitle('Sign Up', screenWidth),
+            Center(
+              child: Text(
+                'Sign Up',
+                style: TextStyle(
+                  fontSize: screenWidth * 0.06,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
-   ),
+              ),
+            ),
             CustomTextField(
               controller: firstNameController,
               label: 'First Name',
@@ -68,26 +69,29 @@ class _SignupScreenState extends State<SignupScreen> {
 
             _buildTitle('Gender', screenWidth),
             SingleChildScrollView(
-           //   scrollDirection: Axis.horizontal,
+              //   scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GenderRadio(
                     gender: 'Male',
                     selectedGender: selectedGender,
-                    onChanged: (value) => setState(() => selectedGender = value),
+                    onChanged: (value) =>
+                        setState(() => selectedGender = value),
                   ),
                   SizedBox(width: screenWidth * 0.01),
                   GenderRadio(
                     gender: 'Female',
                     selectedGender: selectedGender,
-                    onChanged: (value) => setState(() => selectedGender = value),
+                    onChanged: (value) =>
+                        setState(() => selectedGender = value),
                   ),
                   SizedBox(width: screenWidth * 0.01),
                   GenderRadio(
                     gender: 'Other',
                     selectedGender: selectedGender,
-                    onChanged: (value) => setState(() => selectedGender = value),
+                    onChanged: (value) =>
+                        setState(() => selectedGender = value),
                   ),
                 ],
               ),
@@ -163,7 +167,8 @@ class CustomTextField extends StatelessWidget {
   final String label;
   final String hintText;
 
-  const CustomTextField({super.key, 
+  const CustomTextField({
+    super.key,
     required this.controller,
     required this.label,
     required this.hintText,
@@ -186,7 +191,6 @@ class CustomTextField extends StatelessWidget {
         const SizedBox(height: 5),
         TextField(
           controller: controller,
-            
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
             labelText: hintText,
@@ -194,7 +198,6 @@ class CustomTextField extends StatelessWidget {
             fillColor: Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              
             ),
           ),
         ),
@@ -210,7 +213,8 @@ class GenderRadio extends StatelessWidget {
   final String? selectedGender;
   final ValueChanged<String?> onChanged;
 
-  const GenderRadio({super.key, 
+  const GenderRadio({
+    super.key,
     required this.gender,
     required this.selectedGender,
     required this.onChanged,
@@ -227,7 +231,7 @@ class GenderRadio extends StatelessWidget {
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Row(
-         //  mainAxisSize: MainAxisSize.min,
+          //  mainAxisSize: MainAxisSize.min,
           children: [
             Radio<String>(
               value: gender,
