@@ -162,7 +162,7 @@ class CustomTextField extends StatelessWidget {
   final String label;
   final String hintText;
 
-  const CustomTextField({
+  const CustomTextField({super.key, 
     required this.controller,
     required this.label,
     required this.hintText,
@@ -209,7 +209,7 @@ class GenderRadio extends StatelessWidget {
   final String? selectedGender;
   final ValueChanged<String?> onChanged;
 
-  const GenderRadio({
+  const GenderRadio({super.key, 
     required this.gender,
     required this.selectedGender,
     required this.onChanged,
@@ -249,7 +249,7 @@ class GenderRadio extends StatelessWidget {
 class SignUpButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const SignUpButton({required this.onPressed});
+  const SignUpButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
