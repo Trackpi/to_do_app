@@ -1,6 +1,7 @@
 // today's work for rosemary
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:to_do_app/views/home_screen/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -26,7 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: EdgeInsets.symmetric(horizontal: Adaptive.w(10)),
         child: ListView(
           children: [
-           // SizedBox(height: Adaptive.h(5)),
+            // SizedBox(height: Adaptive.h(5)),
             Center(
               child: Image.asset(
                 'assets/images/logo.png',
@@ -45,7 +46,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
             ),
-             SizedBox(height: Adaptive.h(4)),
+            SizedBox(height: Adaptive.h(4)),
             CustomTextField(
               controller: firstNameController,
               label: 'First Name',
@@ -96,9 +97,18 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             SizedBox(height: Adaptive.h(7)),
 
-            SignUpButton(onPressed: () {
-              // Handle sign-up logic
-            }),
+            SignUpButton(
+              onPressed: () {
+                // TODO: signup Logic
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ));
+              },
+            ),
+
             SizedBox(height: Adaptive.h(10)),
           ],
         ),
