@@ -21,20 +21,17 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+        padding: EdgeInsets.symmetric(horizontal: Adaptive.w(10)),
         child: ListView(
           children: [
-            SizedBox(height: Adaptive.w(20)),
+           // SizedBox(height: Adaptive.h(5)),
             Center(
               child: Image.asset(
                 'assets/images/logo.png',
-                width: screenWidth * 0.3,
-                height: screenHeight * 0.2,
+                width: Adaptive.w(40),
+                height: Adaptive.h(25),
               ),
             ),
             //  _buildTitle('Sign Up', screenWidth),
@@ -42,12 +39,13 @@ class _SignupScreenState extends State<SignupScreen> {
               child: Text(
                 'Sign Up',
                 style: TextStyle(
-                  fontSize: screenWidth * 0.06,
+                  fontSize: Adaptive.dp(.30),
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
+             SizedBox(height: Adaptive.h(4)),
             CustomTextField(
               controller: firstNameController,
               label: 'First Name',
@@ -64,10 +62,10 @@ class _SignupScreenState extends State<SignupScreen> {
               hintText: 'Enter Your Company Name',
             ),
 
-            _buildTitle('Date of Birth', screenWidth),
+            _buildTitle('Date of Birth'),
             _buildDateField(),
 
-            _buildTitle('Gender', screenWidth),
+            _buildTitle('Gender'),
             SingleChildScrollView(
               //   scrollDirection: Axis.horizontal,
               child: Row(
@@ -79,14 +77,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     onChanged: (value) =>
                         setState(() => selectedGender = value),
                   ),
-                  SizedBox(width: screenWidth * 0.01),
+                  SizedBox(width: Adaptive.w(.70)),
                   GenderRadio(
                     gender: 'Female',
                     selectedGender: selectedGender,
                     onChanged: (value) =>
                         setState(() => selectedGender = value),
                   ),
-                  SizedBox(width: screenWidth * 0.01),
+                  SizedBox(width: Adaptive.w(.70)),
                   GenderRadio(
                     gender: 'Other',
                     selectedGender: selectedGender,
@@ -96,27 +94,25 @@ class _SignupScreenState extends State<SignupScreen> {
                 ],
               ),
             ),
-
-            SizedBox(height: screenHeight * 0.03),
+            SizedBox(height: Adaptive.h(7)),
 
             SignUpButton(onPressed: () {
               // Handle sign-up logic
             }),
-
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: Adaptive.h(10)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTitle(String text, double screenWidth) {
+  Widget _buildTitle(String text) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0, bottom: 5),
+      padding: const EdgeInsets.only(top: 9.0, bottom: 4),
       child: Text(
         text,
         style: TextStyle(
-          fontSize: screenWidth * 0.04,
+          fontSize: Adaptive.dp(.25),
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -176,19 +172,17 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
           style: TextStyle(
-            fontSize: screenWidth * 0.04,
+            fontSize: Adaptive.dp(.25),
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: Adaptive.h(1)),
         TextField(
           controller: controller,
           decoration: InputDecoration(
@@ -201,7 +195,7 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: Adaptive.h(1.5)),
       ],
     );
   }
@@ -224,14 +218,12 @@ class GenderRadio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: const Color(0xFF82549C)),
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Row(
-          //  mainAxisSize: MainAxisSize.min,
           children: [
             Radio<String>(
               value: gender,
@@ -258,15 +250,13 @@ class SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
     return Center(
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF82549C),
-          padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.25, vertical: 15),
+          padding:
+              EdgeInsets.symmetric(horizontal: Adaptive.w(9), vertical: 15),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),

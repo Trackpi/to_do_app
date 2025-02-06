@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import 'package:to_do_app/views/sign_up_screen/signup_screen.dart';
 
@@ -25,19 +26,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-     final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo.png', 
-               width: screenWidth * 0.3,
-              height: screenHeight * 0.2,
+              'assets/images/logo.png',
+              width: Adaptive.w(40),
+              height: Adaptive.h(30),
             ),
-            SizedBox(height: screenHeight * 0.08),
+            SizedBox(
+              height: Adaptive.h(20),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   'Powered by',
                   style: TextStyle(
-                    fontSize:screenWidth * 0.02,
+                    fontSize: Adaptive.dp(.20),
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
@@ -53,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   ' Track',
                   style: TextStyle(
-                    fontSize: screenWidth * 0.02,
+                    fontSize: Adaptive.dp(.20),
                     fontWeight: FontWeight.bold,
                     color: Colors.orangeAccent,
                   ),
@@ -61,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   'Pi',
                   style: TextStyle(
-                    fontSize: screenWidth * 0.02,
+                    fontSize: Adaptive.dp(.20),
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
