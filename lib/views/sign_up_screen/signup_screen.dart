@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:to_do_app/constants/constants.dart';
+import 'package:to_do_app/gen/assets.gen.dart';
 import 'package:to_do_app/views/home_screen/home_screen.dart';
 import 'package:to_do_app/views/widgets/textwidget.dart';
 
@@ -29,77 +30,68 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: EdgeInsets.symmetric(horizontal: Adaptive.w(10)),
         child: ListView(
           children: [
-           
             Center(
               child: Image.asset(
-                'assets/images/logo.png',
+                Assets.images.logo.path,
                 width: Adaptive.w(40),
-                height: Adaptive.h(25),
+                height: Adaptive.h(20),
               ),
             ),
-          
             Center(
-              child: 
-              Textwid(
-                  text: "Sign Up ",
-                  size: 27,
-                  textBold: FontWeight.w800,
-                ),
+              child: Textwid(
+                text: "Sign Up ",
+                size: 24,
+                textBold: FontWeight.w800,
+              ),
             ),
-           gapLarge,
-           CustomTextField(
+            gapLarge,
+            CustomTextField(
               controller: firstNameController,
               label: 'First Name',
               hintText: 'Enter Your First Name',
             ),
+            gap,
             CustomTextField(
               controller: lastNameController,
               label: 'Last Name',
               hintText: 'Enter Your Last Name',
             ),
+            gap,
             CustomTextField(
               controller: companyController,
               label: 'Company',
               hintText: 'Enter Your Company Name',
             ),
-
+            gap,
             _buildTitle('Date of Birth'),
+            gap,
             _buildDateField(),
-
+            gap,
             _buildTitle('Gender'),
-            SingleChildScrollView(
-              //   scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GenderRadio(
-                    gender: 'Male',
-                    selectedGender: selectedGender,
-                    onChanged: (value) =>
-                        setState(() => selectedGender = value),
-                  ),
-                
-                 gap,
-                  GenderRadio(
-                    gender: 'Female',
-                    selectedGender: selectedGender,
-                    onChanged: (value) =>
-                        setState(() => selectedGender = value),
-                  ),
-               
-                gap,
-                  GenderRadio(
-                    gender: 'Other',
-                    selectedGender: selectedGender,
-                    onChanged: (value) =>
-                        setState(() => selectedGender = value),
-                  ),
-                ],
-              ),
+            gap,
+            Row(
+              spacing: Adaptive.w(2),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GenderRadio(
+                  gender: 'Male',
+                  selectedGender: selectedGender,
+                  onChanged: (value) => setState(() => selectedGender = value),
+                ),
+                GenderRadio(
+                  gender: 'Female',
+                  selectedGender: selectedGender,
+                  onChanged: (value) => setState(() => selectedGender = value),
+                ),
+                GenderRadio(
+                  gender: 'Other',
+                  selectedGender: selectedGender,
+                  onChanged: (value) => setState(() => selectedGender = value),
+                ),
+              ],
             ),
-          
-           gapXL,
-
+            gapLarge,
+            gapLarge,
             SignUpButton(
               onPressed: () {
                 // TODO: signup Logic
@@ -111,8 +103,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     ));
               },
             ),
-
-           
             gapXL
           ],
         ),
@@ -120,16 +110,11 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
- Widget _buildTitle(String text) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 9.0, bottom: 4),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: Adaptive.dp(.25),
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+  Widget _buildTitle(String text) {
+    return Textwid(
+      text: text,
+      textBold: FontWeight.bold,
+      size: 16,
     );
   }
 
@@ -189,15 +174,14 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: Adaptive.dp(.25),
-            fontWeight: FontWeight.bold,
-          ),
+        Textwid(
+          text: label,
+          size: 16,
+          textBold: FontWeight.bold,
         ),
-      //  SizedBox(height: Adaptive.h(1)),
-      gap,
+
+        gap,
+
         TextField(
           controller: controller,
           decoration: InputDecoration(
@@ -210,8 +194,8 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
-     //   SizedBox(height: Adaptive.h(1.5)),
-     gap,
+        //   SizedBox(height: Adaptive.h(1.5)),
+        gap,
       ],
     );
   }
@@ -233,24 +217,37 @@ class GenderRadio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
+      flex: 1,
       child: Container(
+        height: Adaptive.h(5),
+        width: Adaptive.w(25),
+        padding: EdgeInsets.symmetric(horizontal: Adaptive.w(2)),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: pureWhite,
           border: Border.all(color: const Color(0xFF82549C)),
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Radio<String>(
-              value: gender,
-              groupValue: selectedGender,
-              onChanged: onChanged,
-              activeColor: const Color(0xFF82549C),
+            // circular button
+            // TODO: Logic to Select
+            Container(
+              width: Adaptive.w(5),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: pureBlack,
+                  width: 2,
+                ),
+              ),
             ),
-            Text(
-              gender,
-              style: const TextStyle(color: Colors.black),
-            ),
+            gap,
+            gap,
+            Textwid(
+              text: gender,
+              size: 15,
+            )
           ],
         ),
       ),

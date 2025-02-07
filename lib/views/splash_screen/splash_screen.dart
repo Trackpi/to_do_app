@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:to_do_app/constants/constants.dart';
+import 'package:to_do_app/gen/assets.gen.dart';
 import 'package:to_do_app/views/sign_up_screen/signup_screen.dart';
 import 'package:to_do_app/views/widgets/textwidget.dart';
 
@@ -65,13 +66,12 @@ class _SplashScreenState extends State<SplashScreen>
                 );
               },
               child: Image.asset(
-                'assets/images/logo.png',
+                Assets.images.logo.path,
                 width: Adaptive.w(40),
                 height: Adaptive.h(30),
               ),
             ),
-          
-         gapXXL,
+            gapXXL,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,12 +81,11 @@ class _SplashScreenState extends State<SplashScreen>
                   size: 18,
                   textBold: FontWeight.w500,
                 ),
-                
-                 Textwid(
+                Textwid(
                   text: " Track",
                   size: 18,
                   textBold: FontWeight.w500,
-                textColor: Colors.orangeAccent,
+                  textColor: Colors.orangeAccent,
                 ),
                 Textwid(
                   text: "Pi",
