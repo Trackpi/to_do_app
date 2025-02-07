@@ -1,7 +1,9 @@
 // today's work for rosemary
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:to_do_app/constants/constants.dart';
 import 'package:to_do_app/views/home_screen/home_screen.dart';
+import 'package:to_do_app/views/widgets/textwidget.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -27,7 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
         padding: EdgeInsets.symmetric(horizontal: Adaptive.w(10)),
         child: ListView(
           children: [
-            // SizedBox(height: Adaptive.h(5)),
+           
             Center(
               child: Image.asset(
                 'assets/images/logo.png',
@@ -35,19 +37,17 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: Adaptive.h(25),
               ),
             ),
-            //  _buildTitle('Sign Up', screenWidth),
+          
             Center(
-              child: Text(
-                'Sign Up',
-                style: TextStyle(
-                  fontSize: Adaptive.dp(.30),
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+              child: 
+              Textwid(
+                  text: "Sign Up ",
+                  size: 27,
+                  textBold: FontWeight.w800,
                 ),
-              ),
             ),
-            SizedBox(height: Adaptive.h(4)),
-            CustomTextField(
+           gapLarge,
+           CustomTextField(
               controller: firstNameController,
               label: 'First Name',
               hintText: 'Enter Your First Name',
@@ -78,14 +78,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     onChanged: (value) =>
                         setState(() => selectedGender = value),
                   ),
-                  SizedBox(width: Adaptive.w(.70)),
+                
+                 gap,
                   GenderRadio(
                     gender: 'Female',
                     selectedGender: selectedGender,
                     onChanged: (value) =>
                         setState(() => selectedGender = value),
                   ),
-                  SizedBox(width: Adaptive.w(.70)),
+               
+                gap,
                   GenderRadio(
                     gender: 'Other',
                     selectedGender: selectedGender,
@@ -95,7 +97,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 ],
               ),
             ),
-            SizedBox(height: Adaptive.h(7)),
+          
+           gapXL,
 
             SignUpButton(
               onPressed: () {
@@ -109,14 +112,15 @@ class _SignupScreenState extends State<SignupScreen> {
               },
             ),
 
-            SizedBox(height: Adaptive.h(10)),
+           
+            gapXL
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTitle(String text) {
+ Widget _buildTitle(String text) {
     return Padding(
       padding: const EdgeInsets.only(top: 9.0, bottom: 4),
       child: Text(
@@ -192,7 +196,8 @@ class CustomTextField extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: Adaptive.h(1)),
+      //  SizedBox(height: Adaptive.h(1)),
+      gap,
         TextField(
           controller: controller,
           decoration: InputDecoration(
@@ -205,7 +210,8 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: Adaptive.h(1.5)),
+     //   SizedBox(height: Adaptive.h(1.5)),
+     gap,
       ],
     );
   }

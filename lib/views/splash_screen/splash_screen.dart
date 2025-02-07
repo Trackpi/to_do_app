@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:to_do_app/constants/constants.dart';
 import 'package:to_do_app/views/sign_up_screen/signup_screen.dart';
+import 'package:to_do_app/views/widgets/textwidget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -68,34 +70,28 @@ class _SplashScreenState extends State<SplashScreen>
                 height: Adaptive.h(30),
               ),
             ),
-            SizedBox(height: Adaptive.h(10)),
+          
+         gapXXL,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'Powered by',
-                  style: TextStyle(
-                    fontSize: Adaptive.dp(.20),
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                Textwid(
+                  text: "Powered by ",
+                  size: 18,
+                  textBold: FontWeight.w500,
                 ),
-                Text(
-                  ' Track',
-                  style: TextStyle(
-                    fontSize: Adaptive.dp(.20),
-                    fontWeight: FontWeight.bold,
-                    color: Colors.orangeAccent,
-                  ),
+                
+                 Textwid(
+                  text: " Track",
+                  size: 18,
+                  textBold: FontWeight.w500,
+                textColor: Colors.orangeAccent,
                 ),
-                Text(
-                  'Pi',
-                  style: TextStyle(
-                    fontSize: Adaptive.dp(.20),
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                Textwid(
+                  text: "Pi",
+                  size: 18,
+                  textBold: FontWeight.w500,
                 ),
               ],
             ),
