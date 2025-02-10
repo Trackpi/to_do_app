@@ -33,8 +33,8 @@ class _SignupScreenState extends State<SignupScreen> {
             Center(
               child: Image.asset(
                 Assets.images.logo.path,
-                width: Adaptive.w(40),
-                height: Adaptive.h(20),
+                width: 40.w,
+                height: 20.h,
               ),
             ),
             Center(
