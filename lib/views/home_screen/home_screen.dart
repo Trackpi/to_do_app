@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime _focusedDay = DateTime.now();
+    DateTime focusedDay = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Adaptive.h(1),
@@ -95,10 +95,10 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-           Card(
-              color:Color(0xFFD4BEE4) ,
+            Card(
+              color: Color(0xFFD4BEE4),
               child: EasyDateTimeLinePicker(
-                focusedDate: _focusedDay,
+                focusedDate: focusedDay,
                 firstDate: DateTime(2024, 3, 18),
                 lastDate: DateTime(2030, 3, 18),
                 onDateChange: (date) {
@@ -106,7 +106,6 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             )
-            
           ],
         ),
       ),
