@@ -27,7 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Adaptive.w(10)),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: ListView(
           children: [
             Center(
@@ -70,8 +70,7 @@ class _SignupScreenState extends State<SignupScreen> {
             _buildTitle('Gender'),
             gap,
             Row(
-              spacing: Adaptive.w(2),
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GenderRadio(
                   gender: 'Male',
@@ -242,7 +241,7 @@ class GenderRadio extends StatelessWidget {
                 ),
               ),
             ),
-            gap,
+
             gap,
             Textwid(
               text: gender,
