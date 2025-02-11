@@ -4,6 +4,9 @@ import 'package:sizer/sizer.dart';
 import 'package:to_do_app/constants/constants.dart';
 import 'package:to_do_app/gen/assets.gen.dart';
 import 'package:to_do_app/views/home_screen/home_screen.dart';
+import 'package:to_do_app/views/widgets/custom_texttfeild.dart';
+
+import 'package:to_do_app/views/widgets/signupbutton.dart';
 import 'package:to_do_app/views/widgets/textwidget.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -153,54 +156,6 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 }
 
-// ==================== REUSABLE WIDGETS ====================
-
-// Custom TextField Widget
-class CustomTextField extends StatelessWidget {
-  final TextEditingController controller;
-  final String label;
-  final String hintText;
-
-  const CustomTextField({
-    super.key,
-    required this.controller,
-    required this.label,
-    required this.hintText,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Textwid(
-          text: label,
-          size: 16,
-          textBold: FontWeight.bold,
-        ),
-
-        gap,
-
-        TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            labelText: hintText,
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
-        ),
-        //   SizedBox(height: Adaptive.h(1.5)),
-        gap,
-      ],
-    );
-  }
-}
-
-// Gender Radio Widget
 class GenderRadio extends StatelessWidget {
   final String gender;
   final String? selectedGender;
@@ -215,68 +170,31 @@ class GenderRadio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 1,
-      child: Container(
-        height: Adaptive.h(5),
-        width: Adaptive.w(25),
-        padding: EdgeInsets.symmetric(horizontal: Adaptive.w(2)),
-        decoration: BoxDecoration(
-          color: pureWhite,
-          border: Border.all(color: const Color(0xFF82549C)),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            // circular button
-            // TODO: Logic to Select
-            Container(
-              width: Adaptive.w(5),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: pureBlack,
-                  width: 2,
-                ),
-              ),
-            ),
-
-            gap,
-            Textwid(
-              text: gender,
-              size: 15,
-            )
-          ],
-        ),
+    return Container(
+      height: Adaptive.h(5),
+      width: Adaptive.w(26.5),
+      // padding: EdgeInsets.symmetric(horizontal: Adaptive.w(2)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: const Color(0xFF82549C)),
+        borderRadius: BorderRadius.circular(5.0),
       ),
-    );
-  }
-}
-
-// Sign Up Button Widget
-class SignUpButton extends StatelessWidget {
-  final VoidCallback onPressed;
-
-  const SignUpButton({super.key, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF82549C),
-          padding:
-              EdgeInsets.symmetric(horizontal: Adaptive.w(9), vertical: 15),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Radio<String>(
+            value: gender,
+            groupValue: selectedGender,
+            onChanged: onChanged,
+            activeColor: Color(0xFF82549C),
           ),
-        ),
-        child: const Text(
-          'Sign Up',
-          style: TextStyle(color: Colors.white),
-        ),
+          Textwid(
+            text: gender,
+            size: 13,
+            textBold: FontWeight.w800,
+            textColor: Colors.black,
+          )
+        ],
       ),
     );
   }
