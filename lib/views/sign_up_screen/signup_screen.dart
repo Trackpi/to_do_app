@@ -5,6 +5,7 @@ import 'package:to_do_app/constants/constants.dart';
 import 'package:to_do_app/gen/assets.gen.dart';
 import 'package:to_do_app/views/home_screen/home_screen.dart';
 import 'package:to_do_app/views/widgets/custom_texttfeild.dart';
+import 'package:to_do_app/views/widgets/gender_radiobutton.dart';
 
 import 'package:to_do_app/views/widgets/signupbutton.dart';
 import 'package:to_do_app/views/widgets/textwidget.dart';
@@ -156,46 +157,3 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 }
 
-class GenderRadio extends StatelessWidget {
-  final String gender;
-  final String? selectedGender;
-  final ValueChanged<String?> onChanged;
-
-  const GenderRadio({
-    super.key,
-    required this.gender,
-    required this.selectedGender,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: Adaptive.h(5),
-      width: Adaptive.w(26.5),
-      // padding: EdgeInsets.symmetric(horizontal: Adaptive.w(2)),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFF82549C)),
-        borderRadius: BorderRadius.circular(5.0),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Radio<String>(
-            value: gender,
-            groupValue: selectedGender,
-            onChanged: onChanged,
-            activeColor: Color(0xFF82549C),
-          ),
-          Textwid(
-            text: gender,
-            size: 13,
-            textBold: FontWeight.w800,
-            textColor: Colors.black,
-          )
-        ],
-      ),
-    );
-  }
-}

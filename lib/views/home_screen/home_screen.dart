@@ -101,11 +101,15 @@ class HomeScreen extends StatelessWidget {
                 focusedDate: focusedDay,
                 firstDate: DateTime(2024, 3, 18),
                 lastDate: DateTime(2030, 3, 18),
+                  dayElementsOrder: const [DayElement.middle(),DayElement.bottom()],
+                  
                 onDateChange: (date) {
                   // Handle the selected date.
                 },
               ),
+              
             ),
+            
             gapLarge,
 
  _buildCategoryFilters(),
