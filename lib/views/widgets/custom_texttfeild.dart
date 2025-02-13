@@ -1,6 +1,4 @@
 
-
-
 import 'package:flutter/material.dart';
 import 'package:to_do_app/constants/constants.dart';
 import 'package:to_do_app/views/widgets/textwidget.dart';
