@@ -4,6 +4,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sizer/sizer.dart';
 import 'package:to_do_app/constants/constants.dart';
 import 'package:to_do_app/gen/assets.gen.dart';
+import 'package:to_do_app/views/widgets/taskcard.dart';
 import 'package:to_do_app/views/widgets/textwidget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -190,90 +191,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-class TaskCard extends StatefulWidget {
-  @override
-  _TaskCardState createState() => _TaskCardState();
-}
 
-class _TaskCardState extends State<TaskCard> {
-  bool isExpanded = false;
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      Radio(
-                        value: 1,
-                        groupValue: null, // Handle selection logic
-                        onChanged: (value) {},
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Textwid(text: "Meeting with UI/UX team")),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Textwid(text: "Lorem ipsum dolor sit amet consectetur.")),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Textwid(text: "🕒 08:00pm")),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                  },
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    width: isExpanded ? 120 : 40,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 236, 196, 243),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: isExpanded
-                        ? SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Icon(Icons.arrow_forward, color: Colors.white),
-                                Icon(Icons.calendar_today, color: Colors.white),
-                                Icon(Icons.edit, color: Colors.white),
-                                Icon(Icons.delete, color: Colors.white),
-                              ],
-                            ),
-                        )
-                        : Center(
-                            child: Icon(Icons.arrow_forward, color: Colors.white),
-                          ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
    
